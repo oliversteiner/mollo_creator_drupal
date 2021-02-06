@@ -1,0 +1,10 @@
+name: GraphQL Demo
+type: module
+description: 'GraphQL Demo for Mollo Creator Drupal'
+package: Mollo
+core: 8.x
+dependencies:
+  - graphql:graphql
+  - node:node
+  - mollo_creator_drupal
+core_version_requirement: ^8 || ^9

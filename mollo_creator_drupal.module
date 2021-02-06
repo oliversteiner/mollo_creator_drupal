@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Contains mollo_creator_drupal.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function mollo_creator_drupal_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the mollo_creator_drupal module.
+    case 'help.page.mollo_creator_drupal':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Creator Template') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function mollo_creator_drupal_theme() {
+
+  return [
+    'twig_template_block' => [
+      'variables' => [
+        'attributes' => [],
+        'mollo_block' => [],
+      ],
+    ],
+  ];
+}
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function mollo_creator_drupal_page_attachments(array &$attachments) {
+  $roles = \Drupal::currentUser()->getRoles();
+
+  if (in_array('administrator', $roles, TRUE)) {
+    $attachments['#attached']['library'][] = 'mollo_creator_drupal/main';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function mollo_creator_drupal_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+
+  if ($form_id === 'mollo_creator_drupal_settings_form') {
+    $form['#attached']['library'][] = 'mollo_creator_drupal/form';
+  }
+}

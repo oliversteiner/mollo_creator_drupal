@@ -1,0 +1,25 @@
+.mollo-creator-drupal .success {
+  color: green;
+}
+.mollo-creator-drupal .failed {
+  color: red;
+}
+.mollo-creator-drupal .css-test {
+  color: green;
+}
+.mollo-creator-drupal table.twig-variable-test th {
+  margin: 0;
+  padding: 0.5rem;
+  height: 1rem;
+}
+.mollo-creator-drupal table.twig-variable-test td {
+  margin: 0;
+  padding: 0.5rem;
+  height: 1rem;
+}
+.mollo-creator-drupal table.twig-variable-test td.failed {
+  color: white;
+  background-color: red;
+}
+
+/*# sourceMappingURL=mollo-creator-drupal.css.map */

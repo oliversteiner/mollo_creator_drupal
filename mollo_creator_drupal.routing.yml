@@ -1,0 +1,23 @@
+#
+#  Page
+#-----------------------#
+page:
+  path: '/mollo-creator-drupal'
+  defaults:
+    _controller: '\Drupal\mollo_creator_drupal\Controller\MolloCreatorDrupalController::page'
+    _title: 'Creator Template'
+  requirements:
+    _permission: 'access content'
+
+#
+#  Settings Form
+#-----------------------#
+settings:
+  path: 'admin/config/system/configuration/mollo-creator-drupal'
+  defaults:
+    _form: '\Drupal\mollo_creator_drupal\Form\MolloCreatorDrupalSettingsForm'
+    _title: 'Creator Settings Form'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
