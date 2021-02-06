@@ -1,5 +1,5 @@
 # Drupal 9 Module Starter
-A Ready to use Drupal 9 Module Starter.
+A Ready to use Drupal 9 Module Starter / Boilerplate.
 
 It includes a Bash Script to automatically rename all files with your module name.
 
