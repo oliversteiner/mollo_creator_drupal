@@ -1,14 +1,14 @@
 <?php
 /**
- *  Mollo Module Trait
+ *  Creator Trait
  *
  */
 
 
-namespace Drupal\mollo_module\Utils;
+namespace Drupal\mollo_creator_drupal\Utils;
 
 
-trait MolloModuleTrait {
+trait MolloCreatorDrupalTrait {
 
   /**
    * Name of our module.
@@ -18,7 +18,7 @@ trait MolloModuleTrait {
    */
 
   protected function getModuleName(): string {
-    return 'mollo_module';
+    return 'mollo_creator_drupal';
   }
 
   /**

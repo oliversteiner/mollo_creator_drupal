@@ -14,7 +14,7 @@
  *
  */
 
-namespace Drupal\mollo_module\Form;
+namespace Drupal\mollo_creator_drupal\Form;
 
 use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\Form\ConfigFormBase;
@@ -24,14 +24,14 @@ use Drupal\Core\StreamWrapper\StreamWrapperManager;
 /**
  * Class SettingsForm.
  */
-class MolloModuleSettingsForm extends ConfigFormBase {
+class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
     return [
-      'mollo_module.settings',
+      'mollo_creator_drupal.settings',
     ];
   }
 
@@ -39,14 +39,14 @@ class MolloModuleSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'mollo_module_settings_form';
+    return 'mollo_creator_drupal_settings_form';
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('mollo_module.settings');
+    $config = $this->config('mollo_creator_drupal.settings');
     $default_scheme = $this->config('system.file')->get('default_scheme');
 
     // Checkboxes
@@ -173,7 +173,7 @@ class MolloModuleSettingsForm extends ConfigFormBase {
     $values = $form_state->getValues();
     $file_system = \Drupal::service('file_system');
     $default_scheme = $this->config('system.file')->get('default_scheme');
-    $config = $this->config('mollo_module.settings');
+    $config = $this->config('mollo_creator_drupal.settings');
     try {
       if (!empty($values['image_upload'])) {
         $filename = $file_system->copy($values['image_upload']->getFileUri(), $default_scheme . '://');

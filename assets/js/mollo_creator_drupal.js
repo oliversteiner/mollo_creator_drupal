@@ -1,6 +1,6 @@
 /**
  * @file
- * mollo_module behaviors.
+ * mollo_creator_drupal behaviors.
  */
 
 (function($, Drupal, drupalSettings) {
@@ -12,14 +12,14 @@
    */
   Drupal.behaviors.molloModule = {
     attach(context, settings) {
-      console.log('Mollo Module');
+      console.log('Creator');
 
-      const $triggerElem = $('.mollo-module-test-1-trigger');
-      const $resultElem = $('.mollo-module-test-1-result');
+      const $triggerElem = $('.mollo-creator-drupal-test-1-trigger');
+      const $resultElem = $('.mollo-creator-drupal-test-1-result');
       let counter = 0;
 
-      $('#mollo-module', context)
-        .once('mollo-module')
+      $('#mollo-creator-drupal', context)
+        .once('mollo-creator-drupal')
         .each(() => {
           $triggerElem.click(event => {
             console.log('click!');

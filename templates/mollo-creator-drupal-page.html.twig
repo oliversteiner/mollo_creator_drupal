@@ -1,18 +1,18 @@
 {# ------------------------------------------------ #}
-{# Mollo Module Template Page #}
+{# Creator Template Page #}
 {# ------------------------------------------------ #}
 
 {# For twig Variable suggestion #}
-{# @var mollo_page \Drupal\mollo_module\Controller\MolloModuleController:page #}
+{# @var mollo_page \Drupal\mollo_creator_drupal\Controller\MolloCreatorDrupalController:page #}
 
 {#  {{ dd(_context) }}  #}
 
-{{ attach_library('mollo_module/main') }}
+{{ attach_library('mollo_creator_drupal/main') }}
 
 {% set test = mollo_page.test ? 'success':'failed' %}
 
 {# for jQuery.one you need one Element with a ID #}
-<div class="mollo-module" id="mollo-module">
+<div class="mollo-creator-drupal" id="mollo-creator-drupal">
 
   <div class="system-status-general-info">
     <div class="system-status-general-info__items">
@@ -32,7 +32,7 @@
 
 
       {# ------------------------------------------------ #}
-      {# Mollo Module JS Test #}
+      {# Creator JS Test #}
       {# ------------------------------------------------ #}
       <div class="system-status-general-info__item card">
         <span class="system-status-general-info__item-icon "></span>
@@ -41,9 +41,9 @@
           <div class="system-status-general-info__description">clicking this Button should iterate only one by one
           </div>
           <div>
-            <a href="#" role="button" class=" button button--small button--primary mollo-module-test-1-trigger">Click
+            <a href="#" role="button" class=" button button--small button--primary mollo-creator-drupal-test-1-trigger">Click
               me</a>
-            <span class="mollo-module-test-1-result">0</span>
+            <span class="mollo-creator-drupal-test-1-result">0</span>
           </div>
         </div>
       </div>
@@ -83,7 +83,7 @@
           <h3 class="system-status-general-info__item-title">Twig Template Block</h3>
           <div class="system-status-general-info__description">
 
-            {{ drupal_block('mollo_module_twig_template_block') }}
+            {{ drupal_block('mollo_creator_drupal_twig_template_block') }}
 
 
           </div>
@@ -100,7 +100,7 @@
           <h3 class="system-status-general-info__item-title">Inline Template Block</h3>
           <div class="system-status-general-info__description">
 
-            {{ drupal_block('mollo_module_inline_template_block') }}
+            {{ drupal_block('mollo_creator_drupal_inline_template_block') }}
 
           </div>
         </div>
@@ -115,7 +115,7 @@
           <h3 class="system-status-general-info__item-title">Include Twig</h3>
           <div class="system-status-general-info__description">
 
-            {% include '@mollo_module/include/_mollo-module-include.html.twig' %}
+            {% include '@mollo_creator_drupal/include/_mollo-creator-drupal-include.html.twig' %}
           </div>
         </div>
       </div>

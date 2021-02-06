@@ -11,10 +11,10 @@ cyan=$(tput setaf 6)
 reset=$(tput sgr0)
 
 
-OLD_NAME='mollo_module'
-OLD_TITLE='Mollo Module'
-OLD_NAME_DASH="mollo-module"
-OLD_NAME_PASCAL="MolloModule"
+OLD_NAME='mollo_editor_drupal'
+OLD_TITLE='Editor'
+OLD_NAME_DASH="mollo-editor-drupal"
+OLD_NAME_PASCAL="molloEditorDrupal"
 
 rename_files() {
   echo "Renaming files..."
@@ -25,7 +25,7 @@ rename_files() {
     read -r FNAME1
   do
     echo " - $FNAME1"
-    mv "$FNAME1" "${FNAME2//$OLD_NAME/$NEW_NAME}"
+    mv "$FNAME1" "${FNAME1//$OLD_NAME/$NEW_NAME}"
   done
 
   echo "${cyan}kebab-case:${reset}"

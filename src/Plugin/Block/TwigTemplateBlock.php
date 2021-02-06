@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\mollo_module\Plugin\Block;
+namespace Drupal\mollo_creator_drupal\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 
@@ -8,7 +8,7 @@ use Drupal\Core\Block\BlockBase;
  * Provides a 'twig_template_block' block.
  *
  * @Block(
- *  id = "mollo_module_twig_template_block",
+ *  id = "mollo_creator_drupal_twig_template_block",
  *  admin_label = @Translation("Twig Template Block"),
  *   category = @Translation("Mollo"),
  * )
@@ -26,10 +26,10 @@ class TwigTemplateBlock extends BlockBase {
     $block = [
       '#theme' => 'twig_template_block',
       '#attached' => [
-        'library' => ['mollo_module/block'],
+        'library' => ['mollo_creator_drupal/block'],
       ],
       '#attributes' => [
-        'class' => ['mollo-module'],
+        'class' => ['mollo-creator-drupal'],
         'id' => 'twig-template-block',
       ],
       '#mollo_block' => $variables,
@@ -46,9 +46,9 @@ class TwigTemplateBlock extends BlockBase {
 
   public function getVars() {
 
-    // for Twig Variables Suggestion define Vars in MolloModuleController:
+    // for Twig Variables Suggestion define Vars in MolloCreatorDrupalController:
     // and include
-    // {# @var mollo_module \Drupal\mollo_module\Controller\MolloModuleController #}
+    // {# @var mollo_creator_drupal \Drupal\mollo_creator_drupal\Controller\MolloCreatorDrupalController #}
     // at top of your twig Template
 
     $variables['foo'] = 'foo - Block:Twig';

@@ -1,6 +1,6 @@
-name: 'Mollo Module Template'
+name: 'Creator Template'
 type: module
-description: 'Template for Drupal Mollo Modules'
+description: 'Template for Drupal Creators'
 core: 8.x
 core_version_requirement: ^8 || ^9
 package: 'Mollo'

@@ -1,23 +1,23 @@
 <?php
 
-namespace Drupal\mollo_module\Controller;
+namespace Drupal\mollo_creator_drupal\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\mollo_module\Utils\MolloModuleTrait;
+use Drupal\mollo_creator_drupal\Utils\MolloCreatorDrupalTrait;
 
 
 /**
- * Class MolloModuleController.
+ * Class MolloCreatorDrupalController.
  *
  *
 
  */
-class MolloModuleController extends ControllerBase {
+class MolloCreatorDrupalController extends ControllerBase {
 
-  use MolloModuleTrait;
+  use MolloCreatorDrupalTrait;
 
   // public  Vars for Twig Var Suggestion. Use in Template via:
-  // {# @var mollo_module \Drupal\mollo_module\Controller\MolloModuleController #}
+  // {# @var mollo_creator_drupal \Drupal\mollo_creator_drupal\Controller\MolloCreatorDrupalController #}
 
   public $test;
 
@@ -33,7 +33,7 @@ class MolloModuleController extends ControllerBase {
    */
   public function page(): array {
 
-    $template_name = 'mollo-module-page.html.twig';
+    $template_name = 'mollo-creator-drupal-page.html.twig';
     $template_file = $this->getTemplatePath() . $template_name;
     $template = file_get_contents($template_file);
 

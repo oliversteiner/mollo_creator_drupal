@@ -4,9 +4,9 @@
 main:
   css:
     theme:
-      assets/css/mollo-module.css: {}
+      assets/css/mollo-creator-drupal.css: {}
   js:
-    assets/js/mollo_module.js: {}
+    assets/js/mollo_creator_drupal.js: {}
   dependencies:
     - core/jquery
     - core/jquery.once
@@ -16,7 +16,7 @@ main:
 block:
   css:
     theme:
-      assets/css/mollo-module-block.css: { }
+      assets/css/mollo-creator-drupal-block.css: { }
 #
 #   Form
 #-----------------------#
