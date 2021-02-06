@@ -1,5 +1,5 @@
 {
-    "name": "drupal/mollo_module",
+    "name": "drupal/mollo_creator_drupal",
     "type": "drupal-module",
     "description": "A Ready to use Drupal 9 Module Starter",
     "license": "GPL-3.0+",
@@ -11,11 +11,11 @@
         "module",
         "starter"
     ],
-    "homepage": "https://github.com/oliversteiner/mollo_module",
+    "homepage": "https://github.com/oliversteiner/mollo_creator_drupal",
     "minimum-stability": "dev",
     "support": {
-        "issues": "https://github.com/oliversteiner/mollo_module/issues",
-        "source": "https://github.com/oliversteiner/mollo_module"
+        "issues": "https://github.com/oliversteiner/mollo_creator_drupal/issues",
+        "source": "https://github.com/oliversteiner/mollo_creator_drupal"
     },
     "author": "Oliver Steiner, oliver@mollo.ch",
     "require": {}

@@ -1,53 +1,78 @@
-# Drupal 9 Module Starter
-A Ready to use Drupal 9 Module Starter.
+# Mollo Creator Drupal
 
-It includes a Bash Script to automatically rename all files with your module name.
+Version 0.1.0 alpha
 
-## This Module give you a ready to use Example of
-- Drupal Module with file structure
-- Page Controller with Page at /your-module-name
-- Block Module with Inline Form
-- Block Module with Twig Template
-- Settings Form
-- JS / SCSS
+## Drupal Backend Module for Mollo Creator Admin Interface
+Mollo Creator is my dream of a easy-to-use Drupal admin interface for Content Creators.
+The goal is a desktop-app-like tool for Content Creators.
+I am going to integrate and unify all the different frontends from my Drupal Modules in this one.
+R.I.P jQuery and CKE. TypeScript and Vue is coming.
 
-## Alternative
-If you just need a Module Skeleton please use
-
-```drush generate```
+## Mollo Creator
+- Admin Interface for Content Creators.
+- It will NOT be a Layout Designer.
+- https://github.com/oliversteiner/mollo-creator
 
 
-## How to use
-```bash
-# Go to destination Path
-cd /web/modules/custom
-
-# get the module
-git clone https://github.com/oliversteiner/mollo_module
-
-# rename directory mollo_module with your module_name
-mv mollo_module your_module_name
-
-# change to your module
-cd your_module_name
-
-# delete git directory:
-rm -rf .git
-
-# make the rename script executable
-chmod +x setup.sh
-
-# start script
-./setup.sh
-
-# enable your new module
-drush en your_module_name
-
-```
+### This module is used to...
+- Hosting the JS Library of Mollo Creator
+- A possibility for syncing formats and styles of your site for the wysiwyg editor
+- Provide a settings page for Creator / graphQL
+- A generator for including other Modules to the Creator
 
 
-## Other Resources
-https://git.drupalcode.org/project/examples/-/tree/3.x/modules
 
+### Features for Devs
+- Add every Entity Type to Creator Gui via your_module.creator.yml and graphQL schema
+- add own Widgets for Creator via vue components
+- A View Display who syncs with the Creator List Panel
+- A Display mode who syncs with the Creator Edit Panel
 
+### Features for Content Creators
+- a fast and clear admin interface for all your content.
+- a standalone app. Edit your content in the app, preview in the browser.
+
+### Technics
+- graphQL
+- Vue 3 / Typescript
+- Quasar
+- TipTap Wysiwyg Creator (or for beginning simply the one from Quasar)
+- Electron
+
+### Dependencies
+- mollo_basic
+- mollo_utils
+- drupal/graphql
+
+### Resources
+Mollo Creator
+- https://github.com/oliversteiner/mollo-creator
+
+Generates Typescript type definitions for certain entities
+ - https://github.com/hoppinger/ts_generator
+
+Drupal GraphQL
+- https://drupal.org/project/graphql
+  https://drupal.org/project/preview_graphql
+
+Quasar
+- https://quasar.dev/
+
+Security
+- https://carvesystems.com/news/the-5-most-common-graphql-security-vulnerabilities/
+
+Graphql server authentication with JWT
+- https://dev.to/ahmdtalat/graphql-server-authentication-with-jwt-3mdi
+
+TipTap
+- https://tiptap.dev/
+- https://github.com/donotebase/quasar-tiptap
+
+Drupal Admin UI (react)
+https://github.com/jsdrupal/drupal-admin-ui
+
+Other
+- https://www.drupal.org/about/strategic-initiatives/admin-ui-js
+- https://www.lullabot.com/articles/drupal-javascript-initiative-the-road-to-a-modern-administration-ui
+- https://www.drupal.org/project/ideas/issues/3017785
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\mollo_module\Plugin\Block;
+namespace Drupal\mollo_creator_drupal\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\node\NodeInterface;
@@ -9,7 +9,7 @@ use Drupal\node\NodeInterface;
  * Provides a 'Inline Template Block' block.
  *
  * @Block(
- *  id = "mollo_module_inline_template_block",
+ *  id = "mollo_creator_drupal_inline_template_block",
  *  admin_label = @Translation("Inline Template Block"),
  *   category = @Translation("Mollo"),
  * )
@@ -26,7 +26,7 @@ class InlineTemplateBlock extends BlockBase {
     $build = [];
 
     $html = '
-<div class="mollo-module-inline-template-block">
+<div class="mollo-creator-drupal-inline-template-block">
   <div class="system-status-general-info__description">
     Twig Variable Test <br>
     <code>Plugin:Block / inline</code>
