@@ -1,5 +1,5 @@
 extend type Mutation {
-  createArticle(data: ArticleInput): ArticleResponse
+  createAricle(data: ArticleInput): ArticleResponse
 }
 extend type Query {
   articles(
