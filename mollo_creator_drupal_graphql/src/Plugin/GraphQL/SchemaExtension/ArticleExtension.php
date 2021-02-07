@@ -6,7 +6,7 @@ use Drupal\graphql\GraphQL\ResolverBuilder;
 use Drupal\graphql\GraphQL\ResolverRegistryInterface;
 use Drupal\graphql\GraphQL\Response\ResponseInterface;
 use Drupal\graphql\Plugin\GraphQL\SchemaExtension\SdlSchemaExtensionPluginBase;
-use Drupal\mollo_creator_drupal_graphql\GraphQL\Response\ArticleResponse;
+use Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Response\ArticleResponse;
 use Exception;
 
 /**

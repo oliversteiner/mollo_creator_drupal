@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\mollo_creator_drupal_graphql\GraphQL\Response;
+namespace Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Response;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\graphql\GraphQL\Response\Response;

@@ -5,7 +5,7 @@ namespace Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\DataProducer;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
-use Drupal\mollo_creator_drupal_graphql\GraphQL\Response\ArticleResponse;
+use Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Response\ArticleResponse;
 use Drupal\node\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -70,12 +70,11 @@ class CreateArticle extends DataProducerPluginBase implements ContainerFactoryPl
    * @param array $data
    *   The submitted values for the article.
    *
-   * @return \Drupal\mollo_creator_drupal\GraphQL\Response\ArticleResponse
    *   The newly created article.
    *
    * @throws \Exception
    */
-  public function resolve(array $data) {
+  public function resolve(array $data): ArticleResponse {
     $response = new ArticleResponse();
     if ($this->currentUser->hasPermission("create article content")) {
       $values = [

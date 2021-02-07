@@ -6,7 +6,7 @@ use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
-use Drupal\mollo_creator_drupal_graphql\Wrappers\QueryConnection;
+use Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Wrappers\QueryConnection;
 use GraphQL\Error\UserError;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -32,7 +32,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class QueryArticles extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
-  const MAX_LIMIT = 100;
+  public const MAX_LIMIT = 100;
 
   /**
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
@@ -68,7 +68,7 @@ class QueryArticles extends DataProducerPluginBase implements ContainerFactoryPl
    */
   public function __construct(
     array $configuration,
-    $pluginId,
+    string $pluginId,
     $pluginDefinition,
     EntityTypeManagerInterface $entityTypeManager
   ) {
@@ -81,11 +81,10 @@ class QueryArticles extends DataProducerPluginBase implements ContainerFactoryPl
    * @param int $limit
    * @param \Drupal\Core\Cache\RefinableCacheableDependencyInterface $metadata
    *
-   * @return \Drupal\mollo_creator_drupal_graphql\Wrappers\QueryConnection
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function resolve($offset, $limit, RefinableCacheableDependencyInterface $metadata) {
+  public function resolve(int $offset, int $limit, RefinableCacheableDependencyInterface $metadata): QueryConnection {
     if ($limit > static::MAX_LIMIT) {
       throw new UserError(sprintf('Exceeded maximum query limit: %s.', static::MAX_LIMIT));
     }

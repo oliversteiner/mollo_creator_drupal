@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\mollo_creator_drupal_graphql\Wrappers;
+namespace Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Wrappers;
 
 use Drupal;
 use Drupal\Core\Entity\Query\QueryInterface;
@@ -25,9 +25,9 @@ class QueryConnection {
   /**
    * @return int
    */
-  public function total() {
+  public function total(): int {
     $query = clone $this->query;
-    $query->range(NULL, NULL)->count();
+    $query->range()->count();
     return $query->execute();
   }
 

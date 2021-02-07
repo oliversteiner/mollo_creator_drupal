@@ -5,7 +5,7 @@ namespace Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Schema;
 use Drupal\graphql\GraphQL\ResolverBuilder;
 use Drupal\graphql\GraphQL\ResolverRegistry;
 use Drupal\graphql\Plugin\GraphQL\Schema\ComposableSchema;
-use Drupal\mollo_creator_drupal_graphql\Wrappers\QueryConnection;
+use Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Wrappers\QueryConnection;
 
 /**
  * @Schema(
