@@ -5,7 +5,7 @@ namespace Drupal\mollo_creator_graphql\Plugin\GraphQL\Schema;
 use Drupal\graphql\GraphQL\ResolverBuilder;
 use Drupal\graphql\GraphQL\ResolverRegistry;
 use Drupal\graphql\Plugin\GraphQL\Schema\SdlSchemaPluginBase;
-use Drupal\mollo_creator_graphql\Plugin\GraphQL\Wrapper\QueryConnection;
+use Drupal\mollo_creator_graphql\Plugin\GraphQL\Wrapper\MolloConnection;
 
 /**
  * @Schema(
@@ -25,8 +25,6 @@ class MolloCreatorSchema extends SdlSchemaPluginBase {
     $this->addQueryFields($registry, $builder);
     $this->addMolloCreatorFields($registry, $builder);
 
-    // Re-usable connection type fields.
-    $this->addConnectionFields('ArticleConnection', $registry, $builder);
 
     return $registry;
   }
@@ -38,16 +36,17 @@ class MolloCreatorSchema extends SdlSchemaPluginBase {
    */
   protected function addMolloCreatorFields(ResolverRegistry $registry, ResolverBuilder $builder) {
 
-    $registry->addFieldResolver('MolloInfo', 'version2',
+    $registry->addFieldResolver('MolloInfo', 'version',
       $builder->callback(function () {
-        return '1.0.0';
+        return '1.0.1';
       })
     );
-    $registry->addFieldResolver('MolloInfo', 'description2',
+    $registry->addFieldResolver('MolloInfo', 'description',
       $builder->callback(function () {
         return 'Base GraphQL for Mollo Modules';
       })
     );
+
   }
 
   /**
@@ -55,35 +54,14 @@ class MolloCreatorSchema extends SdlSchemaPluginBase {
    * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
    */
   protected function addQueryFields(ResolverRegistry $registry, ResolverBuilder $builder): void {
-    $registry->addFieldResolver('Query', 'mollo_info_4',
-      $builder->produce('get_mollo_info')
-        ->map('version', $builder->fromArgument('version'))
-        ->map('description', $builder->fromArgument('description'))
-    );
 
-    $registry->addFieldResolver('Query', 'mollo_info_5',
-      $builder->produce('get_mollo_info')
-        ->map('version', $builder->fromArgument('version'))
-        ->map('description', $builder->fromArgument('description'))
-    );
+    // Query - mollo info 4
+    $registry->addFieldResolver('Query', 'mollo',
+      $builder->callback(function () {
+        return '';
+      }));
+
 
   }
-  /**
-   * @param string $type
-   * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
-   * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
-   */
-  protected function addConnectionFields(string $type, ResolverRegistry $registry, ResolverBuilder $builder) {
-    $registry->addFieldResolver($type, 'version5',
-      $builder->callback(function (QueryConnection $connection) {
-        return $connection->version();
-      })
-    );
 
-    $registry->addFieldResolver($type, 'description5',
-      $builder->callback(function (QueryConnection $connection) {
-        return $connection->description();
-      })
-    );
-  }
 }

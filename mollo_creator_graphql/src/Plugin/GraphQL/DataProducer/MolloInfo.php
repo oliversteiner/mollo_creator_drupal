@@ -2,7 +2,6 @@
 
 namespace Drupal\mollo_creator_graphql\Plugin\GraphQL\DataProducer;
 
-use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
@@ -21,7 +20,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class MolloInfo extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
-  private const VERSION = 'MolloInfo Version 2';
 
   /**
    * @var \Drupal\Core\Session\AccountInterface
@@ -68,9 +66,9 @@ class MolloInfo extends DataProducerPluginBase implements ContainerFactoryPlugin
    */
   public function resolve(): MolloInfoResponse {
     $response = new MolloInfoResponse();
-    if ($this->currentUser->hasPermission("create article content")) {
-
-      $response->setMolloInfo();
+    if ($this->currentUser->hasPermission("access administration pages")) {
+      $data = [];
+      $response->setMolloInfo($data);
     }
     else {
       $response->addViolation(

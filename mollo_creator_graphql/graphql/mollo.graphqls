@@ -3,18 +3,13 @@ schema {
 }
 
 type Query {
-  mollo_info_4: MolloInfo
-  mollo_info_5:MolloConnection
+  mollo: MolloInfo
 }
 
 type MolloInfo {
   version: String
   description: String
-  version2: String
-  description2: String
 }
 
-type MolloConnection {
-  version5: String
-  description5: String
-}
+
+

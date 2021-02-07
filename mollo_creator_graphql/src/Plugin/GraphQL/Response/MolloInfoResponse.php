@@ -16,13 +16,19 @@ class MolloInfoResponse extends Response {
    */
   protected $mollo_info;
 
+
   /**
    * Sets the content.
    *
    *   The mollo_creator to be served.
+   *
+   * @param $data
+   *
+   * @return array
    */
-  public function setMolloInfo(): void {
-    $this->mollo_info = 'Info';
+  public function setMolloInfo($data): array {
+    $this->mollo_info = $data;
+    return $this->getMolloInfo();
   }
 
   /**
@@ -30,7 +36,7 @@ class MolloInfoResponse extends Response {
    *
    *   The mollo_creator to be served.
    */
-  public function mollo_info():string {
+  public function getMolloInfo(): array {
     return $this->mollo_info;
   }
 
