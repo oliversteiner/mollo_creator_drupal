@@ -1,0 +1,6 @@
+
+type MolloInfo {
+  version: String
+  description: String
+}
+
