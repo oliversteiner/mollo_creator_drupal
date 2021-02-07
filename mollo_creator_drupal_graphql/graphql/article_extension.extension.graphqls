@@ -1,0 +1,9 @@
+extend type Mutation {
+  createArticle(data: ArticleInput): ArticleResponse
+}
+extend type Query {
+  articles(
+    offset: Int = 0
+    limit: Int = 10
+  ): ArticleConnection!
+}

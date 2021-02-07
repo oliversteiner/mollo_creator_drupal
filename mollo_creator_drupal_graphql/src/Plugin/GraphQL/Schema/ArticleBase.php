@@ -4,17 +4,18 @@ namespace Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\Schema;
 
 use Drupal\graphql\GraphQL\ResolverBuilder;
 use Drupal\graphql\GraphQL\ResolverRegistry;
-use Drupal\graphql\Plugin\GraphQL\Schema\SdlSchemaPluginBase;
+use Drupal\graphql\Plugin\GraphQL\Schema\ComposableSchema;
 use Drupal\mollo_creator_drupal_graphql\Wrappers\QueryConnection;
 
 /**
  * @Schema(
- *   id = "article",
- *   name = "Article schema"
+ *   id = "article_base",
+ *   name = "Article Base",
+ *   extensions = "article",
+ *   description = "Article - Lists",
  * )
  */
-class ArticleSchema extends SdlSchemaPluginBase {
-
+class ArticleBase extends ComposableSchema {
   /**
    * {@inheritdoc}
    */
@@ -84,7 +85,7 @@ class ArticleSchema extends SdlSchemaPluginBase {
    * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
    * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
    */
-  protected function addConnectionFields($type, ResolverRegistry $registry, ResolverBuilder $builder) {
+  protected function addConnectionFields(string $type, ResolverRegistry $registry, ResolverBuilder $builder) {
     $registry->addFieldResolver($type, 'total',
       $builder->callback(function (QueryConnection $connection) {
         return $connection->total();
@@ -97,5 +98,4 @@ class ArticleSchema extends SdlSchemaPluginBase {
       })
     );
   }
-
 }

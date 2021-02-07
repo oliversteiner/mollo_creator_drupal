@@ -2,6 +2,7 @@
 
 namespace Drupal\mollo_creator_drupal_graphql\Wrappers;
 
+use Drupal;
 use Drupal\Core\Entity\Query\QueryInterface;
 use GraphQL\Deferred;
 
@@ -39,7 +40,7 @@ class QueryConnection {
       return [];
     }
 
-    $buffer = \Drupal::service('graphql.buffer.entity');
+    $buffer = Drupal::service('graphql.buffer.entity');
     $callback = $buffer->add($this->query->getEntityTypeId(), array_values($result));
     return new Deferred(function () use ($callback) {
       return $callback();

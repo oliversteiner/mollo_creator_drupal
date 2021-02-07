@@ -7,16 +7,17 @@ use Drupal\graphql\GraphQL\ResolverRegistryInterface;
 use Drupal\graphql\GraphQL\Response\ResponseInterface;
 use Drupal\graphql\Plugin\GraphQL\SchemaExtension\SdlSchemaExtensionPluginBase;
 use Drupal\mollo_creator_drupal_graphql\GraphQL\Response\ArticleResponse;
+use Exception;
 
 /**
  * @SchemaExtension(
- *   id = "article_composable_extension",
- *   name = "Composable Mollo Creator extension",
- *   description = "A simple extension that adds node related fields.",
- *   schema = "composable"
+ *   id = "article_extension",
+ *   name = "Article  Extension",
+ *   description = "Article Extension for Mutations",
+ *   schema = "article"
  * )
  */
-class ComposableArticleSchemaExtension extends SdlSchemaExtensionPluginBase {
+class ArticleExtension extends SdlSchemaExtensionPluginBase {
 
   /**
    * {@inheritdoc}
@@ -101,7 +102,7 @@ class ComposableArticleSchemaExtension extends SdlSchemaExtensionPluginBase {
     if ($response instanceof ArticleResponse) {
       return 'ArticleResponse';
     }
-    throw new \Exception('Invalid response type.');
+    throw new Exception('Invalid response type.');
   }
 
 }

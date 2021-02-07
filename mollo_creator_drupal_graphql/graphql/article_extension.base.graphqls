@@ -2,6 +2,24 @@ type Mutation
 
 scalar Violation
 
+extend type Query {
+  articles(
+    offset: Int = 0
+    limit: Int = 10
+  ): ArticleConnection!
+}
+
+type Article {
+  id: Int!
+  title: String!
+  author: String
+}
+
+type ArticleConnection {
+  total: Int!
+  items: [Article!]
+}
+
 
 type ArticleResponse implements Response {
   errors: [Violation]
