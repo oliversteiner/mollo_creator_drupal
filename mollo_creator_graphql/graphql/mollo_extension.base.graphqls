@@ -1,6 +1,12 @@
+type Mutation
+
+scalar Violation
 
 type MolloInfo {
   version: String
   description: String
 }
 
+interface Response {
+  errors: [Violation]
+}

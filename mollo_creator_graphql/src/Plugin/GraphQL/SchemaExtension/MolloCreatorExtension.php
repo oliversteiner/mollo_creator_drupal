@@ -8,6 +8,7 @@ use Drupal\graphql\GraphQL\ResolverRegistryInterface;
 use Drupal\graphql\GraphQL\Response\ResponseInterface;
 use Drupal\graphql\Plugin\GraphQL\SchemaExtension\SdlSchemaExtensionPluginBase;
 use Drupal\graphql_composable\GraphQL\Response\ArticleResponse;
+use Drupal\graphql_examples\Wrappers\QueryConnection;
 use Drupal\mollo_blog_graphql\Plugin\GraphQL\Response\MolloBlogResponse;
 use Drupal\mollo_creator_graphql\Plugin\GraphQL\Response\MolloInfoResponse;
 use Exception;
@@ -46,6 +47,26 @@ class MolloCreatorExtension extends SdlSchemaExtensionPluginBase {
         return '';
       }));
   }
+
+  /**
+   * @param string $type
+   * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
+   * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
+   */
+  protected function addConnectionFields(string $type, ResolverRegistry $registry, ResolverBuilder $builder) {
+    $registry->addFieldResolver($type, 'total',
+      $builder->callback(function (QueryConnection $connection) {
+        return $connection->total();
+      })
+    );
+
+    $registry->addFieldResolver($type, 'items',
+      $builder->callback(function (QueryConnection $connection) {
+        return $connection->items();
+      })
+    );
+  }
+
 
   /**
    * Resolves the response type.
