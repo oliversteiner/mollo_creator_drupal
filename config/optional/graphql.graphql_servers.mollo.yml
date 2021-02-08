@@ -1,0 +1,20 @@
+uuid: b21ab56a-05b1-4858-8567-7f0b434e1282
+langcode: en
+status: true
+dependencies: {  }
+name: mollo
+label: Mollo
+schema: mollo
+schema_configuration:
+  mollo:
+    extensions:
+      mollo_blog_extension: mollo_blog_extension
+      mollo_extension: mollo_extension
+      mollo_news_extension: mollo_news_extension
+      composable_extension: 0
+      example_extension: 0
+persisted_queries_settings: {  }
+endpoint: /graphql
+debug_flag: 15
+caching: true
+batching: true
