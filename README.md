@@ -87,7 +87,10 @@ Install Modules:
  - Key
 
 #### Create a new Key
-Go to  ```/admin/config/system/keys/add```
+Go to  
+```shell
+/admin/config/system/keys/add
+```
 
 |               |                          |
 | ------------- |:------------------------ |
@@ -110,7 +113,10 @@ Save it.
 
 
 #### JWT Configuration
-Go to  ```/admin/config/system/jwt```
+Go to  
+```shell 
+/admin/config/system/jwt
+```
 
 |               |                          |
 | ------------- |:------------------------ |
@@ -120,6 +126,34 @@ Go to  ```/admin/config/system/jwt```
 Save configuration
 
 
+## Cors
+Configure CORS for authentification with your App in
+
+```shell
+web/sites/default/services.yml
+```
+
+
+````yaml
+   # Configure Cross-Site HTTP requests (CORS).
+   # Read https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+   # for more information about the topic in general.
+   # Note: By default the configuration is disabled.
+  cors.config:
+    enabled: true
+    # Specify allowed headers, like 'x-allowed-header'.
+    allowedHeaders: [ 'Access-Control-Allow-Headers', 'Origin','Accept', 'X-Requested-With', 'Content-Type', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
+    # Specify allowed request methods, specify ['*'] to allow all possible ones.
+    allowedMethods: ['POST', 'GET', 'OPTIONS', 'PATCH', 'DELETE']
+    # Configure requests allowed from specific origins.
+    allowedOrigins: ['*']
+    # Sets the Access-Control-Expose-Headers header.
+    exposedHeaders: true
+    # Sets the Access-Control-Max-Age header.
+    maxAge: false
+    # Sets the Access-Control-Allow-Credentials header.
+    supportsCredentials: true
+````
 
 
 
