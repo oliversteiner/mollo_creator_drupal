@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\mollo_creator_drupal_graphql\Wrappers;
+namespace Drupal\mollo_creator_graphql\Plugin\GraphQL\Wrapper;
 
 use Drupal\Core\Entity\Query\QueryInterface;
 use GraphQL\Deferred;
 
-class QueryConnection {
+class MolloConnection {
 
   /**
    * @var \Drupal\Core\Entity\Query\QueryInterface

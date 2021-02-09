@@ -1,39 +1,30 @@
 <?php
 
-namespace Drupal\mollo_creator_drupal_graphql\Plugin\GraphQL\DataProducer;
+namespace Drupal\mollo_creator_graphql\Plugin\GraphQL\DataProducer;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
-use Drupal\mollo_creator_drupal_graphql\GraphQL\Response\ArticleResponse;
-use Drupal\node\Entity\Node;
+use Drupal\mollo_creator_graphql\Plugin\GraphQL\Response\MolloInfoResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Creates a new article entity.
- *
  * @DataProducer(
- *   id = "create_article",
- *   name = @Translation("Create Article"),
- *   description = @Translation("Creates a new article."),
+ *   id = "get_mollo_info",
+ *   name = @Translation("Mollo Info"),
+ *   description = @Translation("Shows basic info for Mollo."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Article (Mollo)")
+ *     version = @Translation("Version Number of Mollo")
  *   ),
- *   consumes = {
- *     "data" = @ContextDefinition("any",
- *       label = @Translation("Article data")
- *     )
- *   }
  * )
  */
-class CreateArticle extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class MolloInfo extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+
 
   /**
-   * The current user.
-   *
    * @var \Drupal\Core\Session\AccountInterface
    */
-  protected $currentUser;
+  private $currentUser;
 
   /**
    * {@inheritdoc}
@@ -48,7 +39,7 @@ class CreateArticle extends DataProducerPluginBase implements ContainerFactoryPl
   }
 
   /**
-   * CreateArticle constructor.
+   * Mollo constructor.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -65,34 +56,27 @@ class CreateArticle extends DataProducerPluginBase implements ContainerFactoryPl
   }
 
   /**
-   * Creates an article.
+   * Creates an mollo_news.
    *
-   * @param array $data
-   *   The submitted values for the article.
+   *   The submitted values for the mollo_news.
    *
-   * @return \Drupal\mollo_creator_drupal\GraphQL\Response\ArticleResponse
-   *   The newly created article.
+   *   The newly created mollo_news.
    *
    * @throws \Exception
    */
-  public function resolve(array $data) {
-    $response = new ArticleResponse();
-    if ($this->currentUser->hasPermission("create article content")) {
-      $values = [
-        'type' => 'article',
-        'title' => $data['title'],
-        'body' => $data['description'],
-      ];
-      $node = Node::create($values);
-      $node->save();
-      $response->setArticle($node);
+  public function resolve(): MolloInfoResponse {
+    $response = new MolloInfoResponse();
+    if ($this->currentUser->hasPermission("access administration pages")) {
+      $data = [];
+      $response->setMolloInfo($data);
     }
     else {
       $response->addViolation(
-        $this->t('You do not have permissions to create articles.')
+        $this->t('You do not have permissions to be here.')
       );
     }
     return $response;
   }
+
 
 }

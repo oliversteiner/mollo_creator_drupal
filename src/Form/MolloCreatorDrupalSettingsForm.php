@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Introduction to Form API
  * https://www.drupal.org/docs/drupal-apis/form-api/introduction-to-form-api
@@ -29,7 +30,7 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEditableConfigNames() {
+  protected function getEditableConfigNames(): array {
     return [
       'mollo_creator_drupal.settings',
     ];
@@ -38,20 +39,19 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'mollo_creator_drupal_settings_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state): array {
     $config = $this->config('mollo_creator_drupal.settings');
     $default_scheme = $this->config('system.file')->get('default_scheme');
 
     // Checkboxes
-    // ------------------------------------------------
-
+    // ------------------------------------------------.
     $form['section_checkbox'] = [
       '#type' => 'details',
       '#title' => t('Checkboxes'),
@@ -71,8 +71,7 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
     ];
 
     // Textfield
-    // ------------------------------------------------
-
+    // ------------------------------------------------.
     $form['section_text'] = [
       '#type' => 'details',
       '#title' => t('Text Field'),
@@ -90,8 +89,7 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
     ];
 
     // Radio
-    // ------------------------------------------------
-
+    // ------------------------------------------------.
     $form['section_radio'] = [
       '#type' => 'details',
       '#title' => t('Radio'),
@@ -111,8 +109,7 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
     ];
 
     // Files
-    // ------------------------------------------------
-
+    // ------------------------------------------------.
     $form['section_files'] = [
       '#type' => 'details',
       '#title' => t('Files'),
@@ -133,14 +130,13 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
       ],
     ];
 
-
     return parent::buildForm($form, $form_state);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     parent::validateForm($form, $form_state);
     $moduleHandler = \Drupal::service('module_handler');
 
@@ -154,8 +150,8 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
         }
       }
 
-      // If the user provided a path for a logo or favicon file, make sure a file
-      // exists at that path.
+      // If the user provided a path for a logo or favicon file,
+      // make sure a file exists at that path.
       if ($form_state->getValue('image_path')) {
         $path = $this->validatePath($form_state->getValue('image_path'));
         if (!$path) {
@@ -168,7 +164,7 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     parent::submitForm($form, $form_state);
     $values = $form_state->getValues();
     $file_system = \Drupal::service('file_system');
@@ -179,7 +175,8 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
         $filename = $file_system->copy($values['image_upload']->getFileUri(), $default_scheme . '://');
         $values['image_path'] = $filename;
       }
-    } catch (FileException $e) {
+    }
+    catch (FileException $e) {
       // Ignore.
     }
 
@@ -191,7 +188,7 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
       $values['image_path'] = $this->validatePath($values['image_path']);
     }
 
-    /**
+    /*
      *
      *  section_checkbox
      *  - foo
@@ -209,28 +206,27 @@ class MolloCreatorDrupalSettingsForm extends ConfigFormBase {
      */
 
     // dd($values);
-
     foreach ($values as $key => $value) {
 
-      // checkbox
+      // Checkbox.
       if ($key === 'foo') {
         $config->set('section_checkbox.foo', $value);
       }
       elseif ($key === 'bar') {
         $config->set('section_checkbox.bar', $value);
       }
-      // Radio
+      // Radio.
       elseif ($key === 'active') {
         $config->set('section_radio.active', $value);
       }
-      // Text
+      // Text.
       elseif ($key === 'title') {
         $config->set('section_text.title', $value);
       }
       elseif ($key === 'description') {
         $config->set('section_text.description', $value);
       }
-      // files
+      // Files.
       elseif ($key === 'image_path') {
         $config->set('section_file.image_path', $value);
       }

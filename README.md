@@ -34,6 +34,7 @@ R.I.P jQuery and CKE. TypeScript and Vue is coming.
 
 ### Technics
 - graphQL
+- JWT
 - Vue 3 / Typescript
 - Quasar
 - TipTap Wysiwyg Creator (or for beginning simply the one from Quasar)
@@ -75,4 +76,89 @@ Other
 - https://www.drupal.org/about/strategic-initiatives/admin-ui-js
 - https://www.lullabot.com/articles/drupal-javascript-initiative-the-road-to-a-modern-administration-ui
 - https://www.drupal.org/project/ideas/issues/3017785
+
+
+## Install
+
+### Auth Modules
+Install Modules:
+ - getjwtonlogin,
+ - JWT
+ - Key
+
+#### Create a new Key
+Go to  
+```shell
+/admin/config/system/keys/add
+```
+
+|               |                          |
+| ------------- |:------------------------ |
+| Name          | Mollo                    |
+| Description   | Key for Mollo Creator UI |
+| Key Type      | JWT HMAC Key             |
+| JWT Algorithm | HMAC using SHA-512       |
+| Key Provider  | Configuration            |
+
+
+for **Value** you have to generate a sha512-hash.
+You can put a long Text (like a article from wikipedia) here and generate one:
+
+https://passwordsgenerator.net/sha512-hash-generator/
+
+The Value should look like:
+```80F3F2CA7ADEDFC60F07A792FBFBA268DFFFFC92DB479CF70FACA65FEB981C1A9110179B3576FDB8BC4EFCA1C32C7D03F8CC4B25F906BAC78D8BA31C6707A076```
+
+Save it.
+
+
+#### JWT Configuration
+Go to  
+```shell 
+/admin/config/system/jwt
+```
+
+|               |                          |
+| ------------- |:------------------------ |
+| Algorithm     | HMAC using SHA-512       |
+| Secret        | Mollo                    |
+
+Save configuration
+
+
+## Cors
+Configure CORS for authentification with your App in
+
+```shell
+web/sites/default/services.yml
+```
+
+
+````yaml
+   # Configure Cross-Site HTTP requests (CORS).
+   # Read https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+   # for more information about the topic in general.
+   # Note: By default the configuration is disabled.
+  cors.config:
+    enabled: true
+    # Specify allowed headers, like 'x-allowed-header'.
+    allowedHeaders: [ 'Access-Control-Allow-Headers', 'Origin','Accept', 'X-Requested-With', 'Content-Type', 'Access-Control-Request-Method', 'Access-Control-Request-Headers']
+    # Specify allowed request methods, specify ['*'] to allow all possible ones.
+    allowedMethods: ['POST', 'GET', 'OPTIONS', 'PATCH', 'DELETE']
+    # Configure requests allowed from specific origins.
+    allowedOrigins: ['*']
+    # Sets the Access-Control-Expose-Headers header.
+    exposedHeaders: true
+    # Sets the Access-Control-Max-Age header.
+    maxAge: false
+    # Sets the Access-Control-Allow-Credentials header.
+    supportsCredentials: true
+````
+
+
+
+
+
+
+
 

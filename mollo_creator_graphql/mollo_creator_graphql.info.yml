@@ -1,6 +1,6 @@
-name: GraphQL Demo
+name: Mollo GraphQL
 type: module
-description: 'GraphQL Demo for Mollo Creator Drupal'
+description: 'Base GraphQL Schema for Mollo'
 package: Mollo
 core: 8.x
 dependencies:
